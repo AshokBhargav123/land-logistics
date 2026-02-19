@@ -69,122 +69,131 @@ const HeroSection = () => {
     }
   };
 
+
   return (
-    <div
-      className="bg-gray-100 
-                 lg:h-screen lg:overflow-hidden 
-                 min-h-screen flex items-center justify-center"
-    >
-      <div className="w-full max-w-7xl px-4 sm:px-6 py-6 lg:py-0">
+ 
+  <div className="min-h-screen bg-gray-100 px-4 sm:px-8 lg:px-16 flex items-center">
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+  <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-16">
 
-          {/* ================= LEFT ================= */}
-          <div className="bg-[#E9EEF3] rounded-3xl p-4 relative overflow-hidden">
+    {/* <div className="w-full flex flex-col lg:flex-row items-center gap-6 lg:gap-8"> */}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-              <div className="flex flex-col gap-2">
-                {column1.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt=""
-                    className="rounded-2xl object-cover w-full h-42 sm:h-40"
-                  />
-                ))}
-              </div>
+    {/* ================= LEFT ================= */}
+    <div className="bg-[#E9EEF3] rounded-3xl p-6 relative overflow-hidden 
+                    w-full lg:w-1/2">
 
-              <div className="flex flex-col gap-2">
-                {column2.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt=""
-                    className="rounded-2xl object-cover w-full h-44 sm:h-56"
-                  />
-                ))}
-              </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-              <div className="flex flex-col gap-2">
-                {column3.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt=""
-                    className="rounded-2xl object-cover w-full h-32 sm:h-40"
-                  />
-                ))}
-              </div>
-
-            </div>
-
-            <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#E9EEF3] via-[#E9EEF3]/90 via-[#E9EEF3]/70 to-transparent" />
-
-            <div className="absolute bottom-0 left-6 right-6 pb-4">
-              <h1 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 leading-snug">
-                Land to Logistics <br />
-                India’s Platform for Land, Industrial, and Logistics Real Estate
-              </h1>
-              <p className="mt-1 text-gray-500 text-sm">
-                Search | Select | Connect
-              </p>
-            </div>
-
-          </div>
-
-          {/* ================= RIGHT ================= */}
-          <div className="bg-white rounded-3xl shadow-lg p-6">
-
-            {/* Map */}
-            <MapContainer
-              center={markerPosition}
-              zoom={14}
-              style={{ height: "240px", width: "100%" }}
-              className="rounded-2xl"
-            >
-              <TileLayer
-                attribution="&copy; OpenStreetMap contributors"
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <LocationMarker />
-            </MapContainer>
-
-            {/* 🔍 Search Field */}
-            <div className="relative mt-6">
-              <input
-                type="text"
-                placeholder="Search for location"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                className="w-full px-5 py-3 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* Dynamic Location Info */}
-            <div className="mt-6 border-t pt-4">
-              <h3 className="font-semibold text-lg text-gray-800">
-                {location.split(",")[0]}
-              </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                {location}
-              </p>
-            </div>
-
-            <button
-              onClick={handleSearch}
-              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-full transition duration-300"
-            >
-              Pin your location
-            </button>
-
-          </div>
-
+        <div className="flex flex-col gap-3">
+          {column1.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt=""
+              className="rounded-2xl object-cover w-full h-40"
+            />
+          ))}
         </div>
+
+        <div className="flex flex-col gap-3">
+          {column2.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt=""
+              className="rounded-2xl object-cover w-full h-52"
+            />
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          {column3.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt=""
+              className="rounded-2xl object-cover w-full h-36"
+            />
+          ))}
+        </div>
+
       </div>
+
+      {/* Gradient */}
+      <div className="absolute bottom-0 left-0 w-full h-48 
+                      bg-gradient-to-t from-[#E9EEF3] via-[#E9EEF3]/90 
+                      via-[#E9EEF3]/70 to-transparent 
+                      rounded-b-3xl" />
+
+      {/* Text */}
+      <div className="absolute bottom-0 left-6 right-6 pb-6">
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 leading-snug">
+          Land to Logistics <br />
+          India’s Platform for Land, Industrial, and Logistics Real Estate
+        </h1>
+        <p className="mt-2 text-gray-600 text-sm">
+          Search | Select | Connect
+        </p>
+      </div>
+
     </div>
-  );
+
+    {/* ================= RIGHT ================= */}
+    <div className="bg-white rounded-3xl shadow-lg p-6 
+                    w-full sm:w-[400px] lg:w-[420px]">
+
+      <MapContainer
+        center={markerPosition}
+        zoom={14}
+        style={{ height: "240px", width: "100%" }}
+        className="rounded-2xl"
+      >
+        <TileLayer
+          attribution="&copy; OpenStreetMap contributors"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <LocationMarker />
+      </MapContainer>
+
+      <div className="relative mt-6">
+        <input
+          type="text"
+          placeholder="Search for location"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+          className="w-full px-5 py-3 rounded-full bg-gray-100 
+                     focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div className="mt-6 border-t pt-4">
+        <h3 className="font-semibold text-lg text-gray-800">
+          {location.split(",")[0]}
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          {location}
+        </p>
+      </div>
+
+      <button
+        onClick={handleSearch}
+        className="mt-6 w-full bg-blue-600 hover:bg-blue-700 
+                   text-white font-semibold py-3 rounded-full 
+                   transition duration-300"
+      >
+        Pin your location
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+);
+
 };
 
 export default HeroSection;
